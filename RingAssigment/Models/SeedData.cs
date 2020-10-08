@@ -13,10 +13,9 @@ namespace RingAssigment.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationDbContext>>()))
             {
-                // Look for any movies.
                 if (context.Ring.Any())
                 {
-                    return;   // DB has been seeded
+                    return;
                 }
 
                 context.Ring.AddRange(
