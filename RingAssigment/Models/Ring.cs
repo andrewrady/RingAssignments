@@ -9,8 +9,10 @@ namespace RingAssigment.Models
     public class Ring
     {
         public int Id { get; set; }
+
         [Required]
         public int RingNumber { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Rank { get; set; }
