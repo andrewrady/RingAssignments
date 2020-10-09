@@ -5,10 +5,29 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @foreach (var ring in Model)
-    {
-        <p>@ring.RingNumber</p>
-        <p>@ring.Rank</p>
-    }
+    <h1 class="display-4">Current Rings</h1>
+    <table class="table table-striped border">
+        <thead>
+            <tr>
+                <th>Ring Number</th>
+                <th>Age</th>
+                <th>Division</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ring in Model)
+            {
+                <tr>
+
+                    <td>@ring.RingNumber</td>
+                    <td>@ring.AgeRange</td>
+                    <td>@ring.Division</td>
+                    <td>@ring.Gender</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    
 </div>
