@@ -18,7 +18,6 @@ namespace RingAssigment.Controllers
             _context = context;
         }
 
-        // GET: Rings
         public async Task<IActionResult> Index()
         {
             return View(await _context.Ring.ToListAsync());
