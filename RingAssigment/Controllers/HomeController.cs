@@ -19,7 +19,7 @@ namespace RingAssigment.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Ring.ToListAsync());
+            return View(await _context.Ring.OrderBy(x => x.RingNumber).ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
