@@ -22,11 +22,6 @@ namespace RingAssigment.Controllers
             return View(await _context.Ring.ToListAsync());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

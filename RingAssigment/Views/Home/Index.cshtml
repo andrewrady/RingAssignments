@@ -11,8 +11,10 @@
             <tr>
                 <th>Ring Number</th>
                 <th>Age</th>
+                <th>Rank</th>
                 <th>Division</th>
                 <th>Gender</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,12 +24,18 @@
 
                     <td>@ring.RingNumber</td>
                     <td>@ring.AgeRange</td>
+                    <td>@ring.Rank</td>
                     <td>@ring.Division</td>
                     <td>@ring.Gender</td>
+                    <td>
+                        <a class="btn btn-primary" href="/rings/edit/@ring.Id">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
 
             }
         </tbody>
     </table>
-    
+
 </div>

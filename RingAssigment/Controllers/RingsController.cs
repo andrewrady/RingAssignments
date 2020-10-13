@@ -24,5 +24,59 @@ namespace RingAssigment.Controllers
             return View(await _context.Ring.ToListAsync());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var ring = await _context.Ring.FindAsync(id);
+            if(ring == null)
+            {
+                return NotFound();
+            }
+
+            return View(ring);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Ring ring)
+        {
+            if(id != ring.Id)
+            {
+                return NotFound(); 
+            }
+            if(ModelState.IsValid)
+            {
+                 _context.Update(ring);
+                 await _context.SaveChangesAsync();
+
+                return RedirectToAction("Edit");
+            }
+
+            return RedirectToAction("Edit");
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Ring ring)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            _context.Ring.Add(ring);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Default");
+        }
+
     }
 }

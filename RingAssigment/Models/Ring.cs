@@ -30,6 +30,6 @@ namespace RingAssigment.Models
         public string Division { get; set; }
 
         [Required]
-        public bool status { get; set; }
+        public bool Status { get; set; }
     }
 }

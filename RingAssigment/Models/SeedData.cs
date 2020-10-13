@@ -26,7 +26,7 @@ namespace RingAssigment.Models
                         AgeRange = "8-9",
                         Gender = "Male",
                         Division = "Traditional",
-                        status = true
+                        Status = true
                     },
 
                     new Ring
@@ -36,7 +36,7 @@ namespace RingAssigment.Models
                         AgeRange = "10-12",
                         Gender = "Female",
                         Division = "Traditional",
-                        status = true
+                        Status = true
                     },
 
                     new Ring
@@ -46,7 +46,7 @@ namespace RingAssigment.Models
                         AgeRange = "14-16",
                         Gender = "Male",
                         Division = "Traditional",
-                        status = true
+                        Status = true
                     },
 
                     new Ring
@@ -56,7 +56,7 @@ namespace RingAssigment.Models
                         AgeRange = "8-9",
                         Gender = "Female",
                         Division = "Traditional",
-                        status = true
+                        Status = true
                     }
                 );
                 context.SaveChanges();
