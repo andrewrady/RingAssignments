@@ -52,10 +52,10 @@ namespace RingAssigment.Controllers
                  _context.Update(ring);
                  await _context.SaveChangesAsync();
 
-                return RedirectToAction("Edit");
+                return RedirectToAction(nameof(Edit));
             }
 
-            return RedirectToAction("Edit");
+            return RedirectToAction(nameof(Edit));
         }
 
         [HttpGet]
@@ -75,6 +75,22 @@ namespace RingAssigment.Controllers
             _context.Ring.Add(ring);
             await _context.SaveChangesAsync();
             return RedirectToAction("Default");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var ring = await _context.Ring.FindAsync(id);
+
+            if(ring == null)
+            {
+                return NotFound();
+            }
+
+            _context.Remove(ring);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
         }
 
     }
