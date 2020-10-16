@@ -74,10 +74,10 @@ namespace RingAssigment.Controllers
 
             _context.Ring.Add(ring);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Default");
+            return RedirectToAction("Index", "Home");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
             var ring = await _context.Ring.FindAsync(id);
@@ -89,7 +89,7 @@ namespace RingAssigment.Controllers
 
             _context.Remove(ring);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
 
         }
 

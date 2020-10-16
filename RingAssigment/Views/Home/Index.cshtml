@@ -31,9 +31,12 @@
                         <a class="btn btn-primary" href="/rings/edit/@ring.Id">
                             Edit
                         </a>
-                        <a href="/rings/delete/@ring.Id" class="btn btn-danger">
-                            Delete
-                        </a>
+                         <form  method="post" action="/rings/delete/@ring.Id">
+                             <input type="hidden" value="@ring.Id" />
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                         </form>
                     </td>
                 </tr>
 
