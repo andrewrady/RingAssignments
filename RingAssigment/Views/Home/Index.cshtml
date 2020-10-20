@@ -1,47 +1,102 @@
 ﻿@model IEnumerable<RingAssigment.Models.Ring>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Rings";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Current Rings</h1>
-    <table class="table table-striped border">
-        <thead>
-            <tr>
-                <th>Ring Number</th>
-                <th>Age</th>
-                <th>Rank</th>
-                <th>Division</th>
-                <th>Gender</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ring in Model)
-            {
+    <div class="text-center">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Upcoming</a>
+            </li>
+        </ul>
+        <table id="active" class="table table-striped border">
+            <thead>
                 <tr>
-
-                    <td>@ring.RingNumber</td>
-                    <td>@ring.AgeRange</td>
-                    <td>@ring.Rank</td>
-                    <td>@ring.Division</td>
-                    <td>@ring.Gender</td>
-                    <td>
-                        <a class="btn btn-primary" href="/rings/edit/@ring.Id">
-                            Edit
-                        </a>
-                         <form  method="post" action="/rings/delete/@ring.Id">
-                             <input type="hidden" value="@ring.Id" />
-                            <button class="btn btn-danger">
-                                Delete
-                            </button>
-                         </form>
-                    </td>
+                    <th>Ring Number</th>
+                    <th>Age</th>
+                    <th>Rank</th>
+                    <th>Division</th>
+                    <th>Gender</th>
+                    <th>Actions</th>
                 </tr>
+            </thead>
+            <tbody>
+                @foreach (var ring in ViewBag.ActiveRings)
+                {
+                    <tr>
 
-            }
-        </tbody>
-    </table>
+                        <td>@ring.RingNumber</td>
+                        <td>@ring.AgeRange</td>
+                        <td>@ring.Rank</td>
+                        <td>@ring.Division</td>
+                        <td>@ring.Gender</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="/rings/edit/@ring.Id">
+                                    Edit
+                                </a>
+                                <form method="post" action="/rings/delete/@ring.Id">
+                                    <input type="hidden" value="@ring.Id" />
+                                    <button class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
 
-</div>
+                }
+            </tbody>
+        </table>
+
+        <table id="inactive" class="table table-striped border">
+            <thead>
+                <tr>
+                    <th>Ring Number</th>
+                    <th>Age</th>
+                    <th>Rank</th>
+                    <th>Division</th>
+                    <th>Gender</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ring in ViewBag.InactiveRings)
+                {
+                    <tr>
+
+                        <td>@ring.RingNumber</td>
+                        <td>@ring.AgeRange</td>
+                        <td>@ring.Rank</td>
+                        <td>@ring.Division</td>
+                        <td>@ring.Gender</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="/rings/edit/@ring.Id">
+                                    Edit
+                                </a>
+                                <form method="post" action="/rings/delete/@ring.Id">
+                                    <input type="hidden" value="@ring.Id" />
+                                    <button class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                                <form method="post" action="/rings/status/@ring.Id">
+                                    <input type="hidden" value="@ring.Id" />
+                                    <button type="submit" class="btn btn-success">
+                                        Active
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>

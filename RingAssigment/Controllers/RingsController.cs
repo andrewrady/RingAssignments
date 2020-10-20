@@ -93,5 +93,24 @@ namespace RingAssigment.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Status(int? id)
+        {
+            var inactiveRing = await _context.Ring.FindAsync(id);
+            var activeRing = _context.Ring
+                .Where(x => x.RingNumber == inactiveRing.RingNumber)
+                .FirstOrDefault();
+
+            if (activeRing == null)
+            {
+                return NotFound();
+            }
+
+            _context.Remove(activeRing);
+            inactiveRing.Status = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
