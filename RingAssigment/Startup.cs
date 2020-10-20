@@ -21,6 +21,11 @@ namespace RingAssigment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -50,7 +55,7 @@ namespace RingAssigment
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

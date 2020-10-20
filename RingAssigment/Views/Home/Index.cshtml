@@ -23,19 +23,24 @@
                             <th>Rank</th>
                             <th>Division</th>
                             <th>Gender</th>
-                            <th>Actions</th>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <th>Actions</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var ring in ViewBag.ActiveRings)
                         {
-                            <tr>
+                        <tr>
 
-                                <td>@ring.RingNumber</td>
-                                <td>@ring.AgeRange</td>
-                                <td>@ring.Rank</td>
-                                <td>@ring.Division</td>
-                                <td>@ring.Gender</td>
+                            <td>@ring.RingNumber</td>
+                            <td>@ring.AgeRange</td>
+                            <td>@ring.Rank</td>
+                            <td>@ring.Division</td>
+                            <td>@ring.Gender</td>
+                            @if (User.Identity.IsAuthenticated)
+                            {
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-primary" href="/rings/edit/@ring.Id">
@@ -49,7 +54,8 @@
                                         </form>
                                     </div>
                                 </td>
-                            </tr>
+                            }
+                        </tr>
 
                         }
                     </tbody>
@@ -64,19 +70,24 @@
                             <th>Rank</th>
                             <th>Division</th>
                             <th>Gender</th>
-                            <th>Actions</th>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <th>Actions</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var ring in ViewBag.InactiveRings)
                         {
-                            <tr>
+                        <tr>
 
-                                <td>@ring.RingNumber</td>
-                                <td>@ring.AgeRange</td>
-                                <td>@ring.Rank</td>
-                                <td>@ring.Division</td>
-                                <td>@ring.Gender</td>
+                            <td>@ring.RingNumber</td>
+                            <td>@ring.AgeRange</td>
+                            <td>@ring.Rank</td>
+                            <td>@ring.Division</td>
+                            <td>@ring.Gender</td>
+                            @if (User.Identity.IsAuthenticated)
+                            {
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-primary" href="/rings/edit/@ring.Id">
@@ -96,7 +107,8 @@
                                         </form>
                                     </div>
                                 </td>
-                            </tr>
+                            }
+                        </tr>
 
                         }
                     </tbody>
