@@ -19,14 +19,14 @@ namespace RingAssigment.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var activeRings = await _context.Ring
-                .Where(ring => ring.Status == true)
+            var list = await _context.Ring
                 .OrderBy(ring => ring.RingNumber)
                 .ToListAsync();
-            var inactiveRings = await _context.Ring
-                .Where(ring => ring.Status == false)
-                .OrderBy(ring => ring.RingNumber)
-                .ToListAsync();
+            var activeRings = list
+                .FindAll(ring => ring.Status == true);
+            var inactiveRings = list
+                .FindAll(ring => ring.Status == false);
+
             ViewBag.ActiveRings = activeRings;
             ViewBag.InactiveRings = inactiveRings;
 
