@@ -19,8 +19,8 @@ namespace RingAssigment.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("RingAssigmentContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<RingAssigmentContext>();
+                //services.AddDefaultIdentity<IdentityUser>()
+                //    .AddEntityFrameworkStores<RingAssigmentContext>();
             });
         }
     }
